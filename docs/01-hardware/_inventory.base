@@ -1,0 +1,17 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.hasTag("hardware")
+    order:
+      - file.name
+      - Brand
+      - Quantity
+      - tags
+      - file.backlinks
+    sort: []
+    columnSize:
+      file.name: 148
+      note.Quantity: 90
+      note.tags: 186
