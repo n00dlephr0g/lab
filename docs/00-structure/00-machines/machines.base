@@ -1,0 +1,19 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.tags.contains("machine")
+        - '!file.tags.contains("deprecated")'
+    order:
+      - file.name
+      - IP
+      - Hostname
+      - Host
+      - Interfaces
+      - file.tags
+    columnSize:
+      file.name: 162
+      note.Interfaces: 111
+      note.Host: 133
+      file.tags: 193

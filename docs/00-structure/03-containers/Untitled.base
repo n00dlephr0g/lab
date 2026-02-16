@@ -1,0 +1,10 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      or:
+        - file.tags.contains("container")
+    order:
+      - file.name
+      - file.tags
+      - Host

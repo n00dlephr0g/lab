@@ -7,7 +7,6 @@ views:
     order:
       - file.name
       - Brand
-      - Quantity
       - tags
       - file.backlinks
     sort: []

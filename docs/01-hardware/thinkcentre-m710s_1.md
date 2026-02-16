@@ -1,15 +1,22 @@
 ---
 tags:
   - hardware
-  - computer
-  - proxmox-node
+  - machine
+  - host
 Brand: Lenovo
 aliases:
   - ThinkCentre M710s 1
+  - scallop
 Quantity: 1
+IP:
+  - 192.168.0.x/24
+  - 10.10.0.2
+Interfaces:
+  - "[[scallop-eth0|eth0]]"
+Hostname: scallop
 ---
 # CPU
-[[i5-7400_1|i5 7400 1]]
+[[i5-7400|i5 7400 1]]
 - stock cooler with shroud
 - pasted mid-2025
 
@@ -27,3 +34,7 @@ SATA HDD
 
 # OS
 [[proxmox|Proxmox]]
+
+
+# NIC
+[[scallop-eth0]]

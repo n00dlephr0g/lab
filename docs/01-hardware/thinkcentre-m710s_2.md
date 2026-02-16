@@ -1,8 +1,6 @@
 ---
 tags:
   - hardware
-  - computer
-  - proxmox-node
 Brand: Lenovo
 aliases:
   - ThinkCentre M710s 2
