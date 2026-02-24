@@ -27,7 +27,7 @@ services:
 
       # --- Memory Allocation ---
       INIT_MEMORY: "500M" # Max RAM: 10GB. Adjust as needed.
-      MEMORY: "10G" # Min RAM: 6GB.
+      MEMORY: "8G" # Min RAM: 6GB.
 
       # --- User Permissions (Recommended) ---
       UID: "1000" # Replace with your user's UID (id -u yourusername)
@@ -39,12 +39,9 @@ services:
     volumes:
       # This volume is where the server data (world, config, mods) will be stored persistently.
       # The itzg/minecraft-server image handles downloading/installing into /data internally.
-      - ./data:/data 
+      - /lab/persist/mc/atm:/data 
 
     restart: unless-stopped
-
-    networks:
-      - public
 
     healthcheck:
       test: ["CMD", "mc-health"]
@@ -53,6 +50,3 @@ services:
       retries: 5
       start_period: 5m
 
-networks:
-  public:
-    external: true
