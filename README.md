@@ -1,6 +1,6 @@
 # n00dlelab
 ---
-documentation for homelab
+documentation and configuration for homelab
 
 ## Documentation
 ---
