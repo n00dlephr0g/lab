@@ -5,15 +5,15 @@ services:
     ports:
       - ${PORT}:8080
     volumes:
-      - /data:/data
-      - ~/docker:/data/docker
-      - ./config:/config
+      - /persist/filebrowser:/config
+      # shares
+      - /data/share:/data
+      - /data/downloads:/data/downloads
+      - /data/books:/data/books
+      - /data/music:/data/music
+      - /data/movies:/data/movies
+      - /data/shows:/data/shows
+      - /data/iso:/data/iso
     environment:
       - FB_BASE_URL=/
     restart: always
-    networks:
-      - public
-
-networks:
-  public:
-    external: true

@@ -6,16 +6,10 @@ services:
     environment:
       ND_ENABLEINSIGHTSCOLLECTOR: false
     ports:
-      - "${PORT}:4533"
+      - ${PORT}:4533
     restart: unless-stopped
     volumes:
-      - "./data:/data"
-      - "/data/music/cache:/data/cache"
+      - /persist/navidrome:/data
+      - /cache/navidrome:/data/cache
       - ${MUSIC_LOCATION}:/music:ro
-    networks:
-      - public
-
-networks:
-  public:
-    external: true
 

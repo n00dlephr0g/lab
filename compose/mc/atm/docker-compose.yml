@@ -26,8 +26,8 @@ services:
       # CF_FILE_ID: "5040186" # <--- REPLACE with the actual File ID for ATM9 Sky 1.1.8
 
       # --- Memory Allocation ---
-      INIT_MEMORY: "500M" # Max RAM: 10GB. Adjust as needed.
-      MEMORY: "10G" # Min RAM: 6GB.
+      INIT_MEMORY: "500M" # Min RAM
+      MEMORY: "8G" # Max RAM
 
       # --- User Permissions (Recommended) ---
       UID: "1000" # Replace with your user's UID (id -u yourusername)

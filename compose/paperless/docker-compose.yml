@@ -4,22 +4,18 @@ services:
     image: docker.io/library/redis:8
     restart: unless-stopped
     volumes:
-      - ./redisdata:/data
-    networks:
-      - internal
+      - /persist/paperless/redisdata:/data
 
   db:
     container_name: paperless_db
     image: docker.io/library/postgres:18
     restart: unless-stopped
     volumes:
-      - ./pgdata:/var/lib/postgresql
+      - /persist/paperless/pgdata:/var/lib/postgresql
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
       POSTGRES_PASSWORD: paperless
-    networks:
-      - internal
 
   paperless:
     container_name: paperless
@@ -33,19 +29,16 @@ services:
     ports:
       - "${PORT}:8000"
     volumes:
-      - ./data:/usr/src/paperless/data
-      - /data/paperless:/usr/src/paperless/media
-      - ./export:/usr/src/paperless/export
-      - /home/n00dlephr0g/paperlessconsume:/usr/src/paperless/consume
+      - /persist/paperless/data:/usr/src/paperless/data
+      - /persist/paperless/media:/usr/src/paperless/media
+      - /persist/paperless/export:/usr/src/paperless/export
+      - /persist/paperless/consume:/usr/src/paperless/consume
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
       PAPERLESS_TIKA_ENABLED: 1
       PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
       PAPERLESS_TIKA_ENDPOINT: http://tika:9998
-    networks:
-      - internal
-      - public
 
   gotenberg:
     container_name: paperless_gotenberg
@@ -57,15 +50,11 @@ services:
       - "gotenberg"
       - "--chromium-disable-javascript=true"
       - "--chromium-allow-list=file:///tmp/.*"
-    networks:
-      - internal
 
   tika:
     container_name: paperless_tika
     image: docker.io/apache/tika:latest
     restart: unless-stopped
-    networks:
-      - internal
 
 volumes:
   data:
@@ -73,8 +62,3 @@ volumes:
   pgdata:
   redisdata:
 
-networks:
-  public:
-    external: true
-  internal:
-    driver: bridge

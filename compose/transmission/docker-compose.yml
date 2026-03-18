@@ -6,6 +6,7 @@ services:
       - ${PORT}:9091
     volumes:
       - /persist/transmission:/config
+      - ./config/settings.json:/config/settings.json
       - ${DOWNLOADS}:/downloads
       - ${DOWNLOADS}/torrents:/watch
     environment:
