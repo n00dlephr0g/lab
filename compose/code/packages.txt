@@ -1,0 +1,8 @@
+neovim
+openjdk-21-jdk
+maven
+gradle
+zip
+unzip
+python3
+npm

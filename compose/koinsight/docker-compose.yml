@@ -7,10 +7,10 @@ services:
     ports:
       - "${PORT}:3000"
     volumes:
-      - ./data:/app/data
+      - /persist/koinsight:/app/data
     networks:
-      - public
+      - proxy
 
 networks:
-  public:
+  proxy:
     external: true

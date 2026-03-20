@@ -1,0 +1,18 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    ports:
+      - 3000:3000
+    user: 1000:1000
+    networks:
+      - proxy
+    volumes:
+      - ./config:/app/config # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock:ro # (optional) For docker integrations
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: phr0gw0rld.com # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+
+networks:
+  proxy:
+    external: true

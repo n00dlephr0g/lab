@@ -1,22 +1,23 @@
 services:
   code-server:
-    image: lscr.io/linuxserver/code-server:latest
-    container_name: code_server
+    # image: lscr.io/linuxserver/code-server:latest
+    build: .
+    container_name: code
+    hostname: scallop-code
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Australia/Melbourne
       - DEFAULT_WORKSPACE=/config/workspace #optional
     volumes:
+      - /persist/code:/config
       - /home/n00dlephr0g/.ssh:/config/.ssh 
-      - /home/n00dlephr0g/repos:/config/repos
-      - /home/n00dlephr0g/docker:/config/docker
     ports:
       - ${PORT}:8443
     restart: unless-stopped
     networks:
-      - public
+      - proxy
 
 networks:
-  public:
+  proxy:
     external: true

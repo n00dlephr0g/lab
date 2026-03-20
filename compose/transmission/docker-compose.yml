@@ -4,9 +4,10 @@ services:
     image: linuxserver/transmission
     ports:
       - ${PORT}:9091
+    networks:
+      - proxy
     volumes:
       - /persist/transmission:/config
-      - ./config/settings.json:/config/settings.json
       - ${DOWNLOADS}:/downloads
       - ${DOWNLOADS}/torrents:/watch
     environment:
@@ -15,3 +16,6 @@ services:
       - TZ=Australia/Melbourne
     restart: unless-stopped
 
+networks:
+  proxy:
+    external: true

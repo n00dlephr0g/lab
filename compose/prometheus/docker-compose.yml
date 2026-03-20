@@ -1,0 +1,21 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - '9090:9090'
+    user: '1000:1000'
+    networks:
+      - proxy
+      - prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - /persist/prometheus:/prometheus
+
+
+networks:
+  proxy:
+    external: true
+  prometheus:
+    external: true

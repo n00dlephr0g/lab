@@ -4,6 +4,8 @@ services:
     image: hurlenko/filebrowser
     ports:
       - ${PORT}:8080
+    networks:
+      - proxy
     volumes:
       - /persist/filebrowser:/config
       # shares
@@ -17,3 +19,7 @@ services:
     environment:
       - FB_BASE_URL=/
     restart: always
+
+networks:
+  proxy:
+    external: true

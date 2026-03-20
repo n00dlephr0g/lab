@@ -1,0 +1,11 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+
+title: Homepage
+description: homepage of scallop
+startUrl: https://phr0gw0rld.com
