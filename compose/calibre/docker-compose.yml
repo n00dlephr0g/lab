@@ -30,7 +30,7 @@ services:
       - /persist/calibre/config:/config
       # This is an ingest dir, NOT a library one. Anything added here will be automatically added to your library according to the settings you have configured in CWA Settings page. All files placed here are REMOVED AFTER PROCESSING
       - /data/books/:/cwa-book-ingest
-      - /data/downloads:/cwa-book-ingest/torrents
+        # - /data/downloads:/cwa-book-ingest
       # If you don't have an existing library, CWA will automatically create one at the bind provided here
       - /persist/calibre/books:/calibre-library/
       # If you use calibre plugins, you can bind your plugins folder here to have CWA attempt to add them to it's workflow (WIP)

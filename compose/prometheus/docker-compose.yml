@@ -3,16 +3,17 @@ services:
     image: prom/prometheus
     container_name: prometheus
     restart: unless-stopped
+    user: 1000:1000
+    environment:
+      TZ: Australia/Melbourne
     ports:
       - '9090:9090'
-    user: '1000:1000'
     networks:
       - proxy
       - prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - /persist/prometheus:/prometheus
-
 
 networks:
   proxy:

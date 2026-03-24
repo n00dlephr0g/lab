@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 20s
+  scrape_timeout: 10s
+
+scrape_configs:
+# self scraping
+  - job_name: 'prometheus'
+    static_configs:
+    - targets: ['localhost:9090']
+
+# host metrics
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['172.23.0.1:9100']
