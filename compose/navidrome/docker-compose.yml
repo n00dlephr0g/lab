@@ -7,8 +7,7 @@ services:
       ND_ENABLEINSIGHTSCOLLECTOR: false
     ports:
       - ${PORT}:4533
-    networks:
-      - proxy
+    networks: [global]
     restart: unless-stopped
     volumes:
       - /persist/navidrome:/data
@@ -16,5 +15,5 @@ services:
       - ${MUSIC_LOCATION}:/music:ro
 
 networks:
-  proxy:
+  global:
     external: true
