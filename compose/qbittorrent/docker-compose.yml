@@ -16,9 +16,9 @@ services:
       - 6881:6881/tcp
       - 6881:6881/udp
       # for WebUI
-      - 8089:8080/tcp
+      # - 8089:8080/tcp
     networks:
-      - proxy
+      - global
     read_only: true
     stop_grace_period: 30m
     tmpfs:
@@ -32,5 +32,5 @@ services:
       - /data/downloads:/downloads
 
 networks:
-  proxy:
+  global:
     external: true
