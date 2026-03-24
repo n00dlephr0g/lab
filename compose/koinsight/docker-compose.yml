@@ -8,9 +8,8 @@ services:
       - "${PORT}:3000"
     volumes:
       - /persist/koinsight:/app/data
-    networks:
-      - proxy
+    networks: [global]
 
 networks:
-  proxy:
+  global:
     external: true
